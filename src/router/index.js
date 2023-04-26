@@ -50,6 +50,15 @@ const routes = [
       title: "Рецепты"
     }
   }
+  ,
+  {
+    path: "/SelectOfDishes",
+    name: "SelectOfDishes",
+    component: () => import("../views/SelectOfDishes"),
+    meta: {
+      title: "Подбор блюда"
+    }
+  }
 ]
 
 const router = createRouter({

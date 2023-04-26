@@ -1,6 +1,8 @@
 import { createStore } from 'vuex'
 import axios from "axios"
 import VuexPersistence from 'vuex-persist'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage
 })
@@ -31,24 +33,47 @@ export default createStore({
         let ProductExist = false
         state.favourites.map(function(item){
           if (item.id === favouritesItem.id){
-            alert("Этот товар был вами уже добавлен")
+            //Ошибка должна вызываться
+            toast.warning("Блюдо уже было добавлено", {
+              timeout: 3000,
+              closeOnClick: true,
+              hideProgressBar: true,
+            });
             ProductExist = true
           }
         })
         if (!ProductExist){
           state.favourites.push(favouritesItem)
+          toast.success("Блюдо было добавлено", {
+            timeout: 3000,
+            closeOnClick: true,
+            hideProgressBar: true,
+          });
         } 
       } else{
         state.favourites.push(favouritesItem)
+        toast.success("Блюдо было добавлено", {
+          timeout: 3000,
+          closeOnClick: true,
+          hideProgressBar: true,
+        });
       }
     },
     DELTE_PRODUCTS(state, {data, getters}){
       getters.FAVOURITES.splice(data,1)
+      toast.success("Блюдо было удалено", {
+        timeout: 3000,
+        closeOnClick: true,
+        draggable: true,
+        draggablePercent: 2,
+        hideProgressBar: true,
+      });
     }
   },
   actions: {
     async GET_PRODCUTS_FROM_DB({commit}){
       try {
+        //const products = await axios("https://raw.githubusercontent.com/sedm1/selldish/main/db.json", {
         const products = await axios("https://raw.githubusercontent.com/sedm1/selldish/main/db.json", {
           method: "GET"
         })

@@ -1,7 +1,11 @@
 <template>
   <header>
+    <transition name="fade" @closeModal="IsLoginWindowOpen = !IsLoginWindowOpen">
+        <vLoginPopup v-if="IsLoginWindowOpen"></vLoginPopup>
+    </transition>
     <div class="container">
-        <ul class="menu" :class="{'menu-active' : IsMenuOpen}">
+        <div class="left__header">
+            <ul class="menu" :class="{'menu-active' : IsMenuOpen}">
             <li class="menu__item">
                 <router-link to="/MainPage">Главная</router-link>
             </li>
@@ -13,7 +17,7 @@
                 <div class="round" v-if="this.FAVOURITES.length > 0">{{this.FAVOURITES.length}}</div>
             </li>
             <li class="menu__item">
-                <router-link to="/">Подбор блюда</router-link>
+                <router-link to="/SelectOfDishes">Подбор блюда</router-link>
             </li>
             <li class="menu__item">
                 <router-link to="/RandomProducts">Случайное блюдо</router-link>
@@ -30,17 +34,29 @@
             <path class="middle" d="m 70,50 h -40" />
             <path class="bottom" d="m 69.575405,67.073826 h -40 c -5.592752,0 -6.873604,-9.348582 1.371031,-9.348582 8.244634,0 19.053564,21.797129 19.053564,12.274756 l 0,-40" />
         </svg>
+        </div>
+        <div class="right__header">
+            <button 
+            class="logIn"
+            
+            @click="IsLoginWindowOpen = !IsLoginWindowOpen"
+            >Вход</button>
+            
+        </div>
     </div>
   </header>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import vLoginPopup from './v-login-popup.vue'
 export default {
+  components: { vLoginPopup },
     name: "TheHeader",
     data(){
         return {
-            IsMenuOpen: false
+            IsMenuOpen: false,
+            IsLoginWindowOpen: false,
         }
     },
     computed: {
@@ -51,27 +67,31 @@ export default {
     methods: {
         toggleMenu(){
             this.IsMenuOpen = !this.IsMenuOpen
-        }
+        },
     }
-    
 }
 </script>
 
 <style lang="sass" scoped>
+.fade-enter-active, .fade-leave-active 
+  transition: opacity .5s
+.fade-enter, .fade-leave-to 
+  opacity: 0
 header
     width: 100%
-    padding: 30px 0px
+    padding: 20px 0px
     background: $orange
 .container
     display: flex
-    justify-content: center
+    justify-content: space-between
+    align-items: center
 .menu
     +flexa 
     justify-content: center
     &__item
         color: $white
-        font-size: 18px
-        margin-right: 40px
+        font-size: 16px
+        margin-right: 25px
         position: relative
         font-weight: 400
         letter-spacing: 0.02em
@@ -88,6 +108,12 @@ header
         right: -10px
 .ham7
     display: none
+.logIn
+    color: $white
+    font-size: 16px
+    border: 1px solid $white
+    border-radius: 15px
+    padding: 10px 25px
 @media screen and (max-width: $smallTabletContainer)
     header
         padding: 0px

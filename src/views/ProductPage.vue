@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import VPreloader from '@/components/v-preloader.vue'
 import TheHeader from '@/components/TheHeader.vue';
 import VBreadCrumbs from '../components/VBreadCrumbs.vue';
@@ -71,9 +70,6 @@ export default {
         }
     },
     methods: {
-        ...mapActions([
-            "GET_PRODCUTS_FROM_DB"
-        ]),
         GetCookongLevel(){
             let level = this.Product.CoocingLevel
             switch(level){
@@ -82,9 +78,6 @@ export default {
                 case 'all': return "средняя"
             }
         }
-    },
-    mounted() {
-        this.GET_PRODCUTS_FROM_DB();
     },
     components: { VPreloader, TheHeader, VBreadCrumbs, ProductsSteps }
 }

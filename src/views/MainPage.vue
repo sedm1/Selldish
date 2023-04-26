@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import {mapGetters } from 'vuex';
 //Модули слайдера
 import {Swiper, SwiperSlide } from 'swiper/vue'; 
 import {Pagination, Autoplay} from 'swiper';
@@ -57,11 +57,6 @@ import TheHeader from '@/components/TheHeader.vue';
 import ProductsOfDay from '@/components/ProductsOfDay.vue';
 export default {
     name: "MainPage",
-    methods: {
-        ...mapActions([
-            "GET_PRODCUTS_FROM_DB"
-        ])
-    },
     computed: {
         ...mapGetters([
           "PRODUCTS"
@@ -78,9 +73,6 @@ export default {
         modules: [ Pagination, Autoplay],
         
       };
-    },
-    mounted(){
-      this.GET_PRODCUTS_FROM_DB();
     }
 }
 </script>
@@ -140,4 +132,7 @@ header
   left: 60px
   background-image: url("@/assets/img/prev.png")
   transform: rotate(180deg)
+@media screen and (max-width: $smallTabletContainer)
+  .mainSection
+    height: 600px
 </style>

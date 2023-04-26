@@ -140,4 +140,7 @@ export default {
 @media screen and (max-width: $mainContainer)
     .products__cart
         margin: 0 auto
+@media screen and (max-width: 380px)
+    .products__cart
+        max-width: 320px
 </style>
