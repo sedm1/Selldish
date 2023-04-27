@@ -73,8 +73,8 @@ export default createStore({
   actions: {
     async GET_PRODCUTS_FROM_DB({commit}){
       try {
-        //const products = await axios("https://raw.githubusercontent.com/sedm1/selldish/main/db.json", {
-        const products = await axios("https://raw.githubusercontent.com/sedm1/Selldish/main/db-2.json", {
+        //const products = await axios("https://raw.githubusercontent.com/sedm1/selldish/main/db-2.json", {
+        const products = await axios("https://api.jsonserve.com/D8v-I_", {
           method: "GET"
         })
         commit("SET_PRODUCTS_TO_STATE", products.data)
