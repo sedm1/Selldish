@@ -7,7 +7,7 @@
         >{{Product.title}}</VBreadCrumbs>
         <div class="product">
             <div class="container">
-                <div class="product__img"><img :src="require('@/assets/img/products/' + Product.image)" alt=""></div>
+                <div class="product__img"><img :src="'../' + require('@/assets/img/products/' + Product.image)" alt=""></div>
                 <div class="product__info">
                     <h3 class="product__title">{{Product.title}}</h3>
                     <p class="product__descript">{{Product.moreDescription}}</p>
