@@ -105,7 +105,7 @@ header
         justify-content: center
         font-size: 12px
         top: -8px
-        right: -10px
+        right: -17px
 .ham7
     display: none
 .logIn
@@ -124,31 +124,29 @@ header
         top: 0 
         left: -120%
         transition: .5s
-        width: 65%
+        width: 45%
         height: 100vh
         flex-direction: column
         background: $white
         align-items: flex-start
         justify-content: flex-start
-        padding: 30px 40px
+        padding: 30px 30px
         z-index: 100
         &__item
             color: $braun
             margin-bottom: 20px
-            font-size: 25px
+            font-size: 20px
             font-weight: 500
         &-active
             left: 0px
         .round
             color: $white
             top: -5px
-    .container
-        justify-content: flex-end
+            
 @media screen and (max-width: $mobileContainer)
     .menu
-        max-width: 80%
-        width: 100%
-        padding: 30px
+        width: 60%
+        padding: 20px
         &__item
-            font-size: 5vw
+            font-size: 16px
 </style>

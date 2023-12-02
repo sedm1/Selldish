@@ -24,7 +24,7 @@
               :Products="FilterProducts"
               v-if="FilterProducts.length > 0"
             ></VProductblockItem>
-            <VSliderBlock :Products="this.ProductsItem">Продукты дня</VSliderBlock>
+            <VSliderBlock :Products="this.ProductsItem">Блюда дня</VSliderBlock>
         </div>
     </main>
   </div>
